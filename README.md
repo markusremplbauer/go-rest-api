@@ -11,7 +11,9 @@ Run `docker-compose up` to run the REST-API on port `8080` and a PostgreSQL data
 `GET` is used to request data from the server. The max products limit is set to `10`.
 
 `http://localhost:8080/products`
+
 `http://localhost:8080/products/1`
+
 `http://localhost:8080/products?offset=5&limit=5`
 
 ### POST
