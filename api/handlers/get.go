@@ -32,17 +32,17 @@ func GetProduct(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetProducts(w http.ResponseWriter, r *http.Request) {
-	count, _ := strconv.Atoi(r.FormValue("limit"))
-	start, _ := strconv.Atoi(r.FormValue("offset"))
+	limit, _ := strconv.Atoi(r.FormValue("limit"))
+	offset, _ := strconv.Atoi(r.FormValue("offset"))
 
-	if count > 10 || count < 1 {
-		count = 10
+	if limit > 10 || limit < 1 {
+		limit = 10
 	}
-	if start < 0 {
-		start = 0
+	if offset < 0 {
+		offset = 0
 	}
 
-	products, err := data.GetProducts(data.DB, start, count)
+	products, err := data.GetProducts(data.DB, offset, limit)
 	if err != nil {
 		respondWithError(w, http.StatusInternalServerError, err.Error())
 		return
